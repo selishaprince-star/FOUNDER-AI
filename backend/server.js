@@ -5,12 +5,13 @@ const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const db = require("./db");
-app.get("/", (req, res) => {
-  res.send("Backend is running");
-});
+
 const app = express();
 app.use(cors());
 app.use(express.json());
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
 
 const JWT_SECRET = process.env.JWT_SECRET || "foundrai-dev-secret-change-me";
 const parseRow = (row, fields) => {
