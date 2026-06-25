@@ -156,7 +156,7 @@ function Modal({ title, children, onClose }) {
 }
 
 // ─── API Client (talks to the FoundrAI Express + SQLite backend) ────────────
-cconst API_URL =
+const API_URL =
   (typeof window !== "undefined" && window.FOUNDRAI_API_URL) ||
   "https://founder-ai-ghqr.onrender.com/api";
 
