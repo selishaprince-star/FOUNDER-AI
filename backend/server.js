@@ -1,9 +1,13 @@
+
+
 const express = require("express");
 const cors = require("cors");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const db = require("./db");
-
+app.get("/", (req, res) => {
+  res.send("Backend is running");
+});
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -176,8 +180,14 @@ app.post("/api/ai/pitch", (req, res) => {
 });
 
 const PORT = process.env.PORT || 4000;
+app.get("/api/users", (req, res) => {
+  try {
+    const users = db.prepare("SELECT * FROM users").all();
+    res.json(users);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 app.listen(PORT, () => console.log(`FoundrAI API running on http://localhost:${PORT}`));
 
-app.get("/api/auth/me", (req, res) => {
-  res.json({ message: "Auth route working" });
-});
+
