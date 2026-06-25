@@ -1,0 +1,5 @@
+node_modules/
+backend/foundrai.sqlite
+backend/foundrai.sqlite-*
+dist/
+.DS_Store
